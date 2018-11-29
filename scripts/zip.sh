@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ZIP_NAME='function.zip'
 
 rm ../$ZIP_NAME
