@@ -1,0 +1,22 @@
+{
+  "name": "function-hello-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "HttpTrigger/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobPoldenValtech/functions-app-hello-world.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JacobPoldenValtech/functions-app-hello-world/issues"
+  },
+  "homepage": "https://github.com/JacobPoldenValtech/functions-app-hello-world#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
