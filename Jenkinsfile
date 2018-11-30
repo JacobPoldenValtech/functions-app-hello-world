@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {docker { image 'node:8.14-alpine' }}
     stages {
         stage('build') {
             steps {
@@ -13,8 +13,7 @@ pipeline {
         }
         stage('push') {
             steps {
-                sh 'echo push'
-            }
+                sh 'echo push'            }
         }
     }
 }
