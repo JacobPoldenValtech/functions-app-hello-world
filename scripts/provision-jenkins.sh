@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-resourceGroupName="New-Scratch-ResourceGroup"
+resourceGroupName="New-Scratch-Jenkins-ResourceGroup"
 resourceGroupLocation="UK South"
 
-templateFilePath="../azuredeploy.json"
-parameterFilePath="../azuredeploy.parameters.json"
-pathToFunctionZip="../../function.zip"
+templateFilePath="../jenkins-arm/azuredeploy.json"
+parameterFilePath="../jenkins-arm/azuredeploy.parameters.json"
 
-deploymentName="first-function-app"
+deploymentName="jenkins-tokenHere"
 
 # az login
 
@@ -19,8 +18,3 @@ else
 fi
 
 az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parameterFilePath --verbose
-
-echo "---> Deploying Function Code"
-az functionapp deployment source config-zip -g $resourceGroupName -n "scatch-func-arm" --src $pathToFunctionZip
-
-echo "---> done <---"
