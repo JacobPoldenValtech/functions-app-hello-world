@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 resourceGroupName="New-Scratch-ResourceGroup"
-pathToFunctionZip="../../function.zip"
+pathToFunctionZip="function.zip"
 
 # az login
 

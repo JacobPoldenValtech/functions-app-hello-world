@@ -14,9 +14,15 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('push') {
+        stage('zip') {
             steps {
-                sh 'echo push'            }
+                sh 'scripts/zip.sh'
+            }
+        }
+         stage('push') {
+            steps {
+                sh 'scripts/deploy-function.sh'
+            }
         }
     }
 }
