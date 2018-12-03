@@ -22,9 +22,9 @@ pipeline {
                 archiveArtifacts artifacts: 'test.zip', fingerprint: true
             }
         }
-         stage('push') {
+         stage('branch-name') {
             steps {
-                sh 'scripts/deploy-function.sh'
+                sh 'echo $env.BRANCH_NAME'
             }
         }
     }
