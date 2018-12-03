@@ -16,10 +16,8 @@ pipeline {
         }
         stage('zip') {
             steps {
-                sh 'mkdir archive'
-                sh 'echo test > archive/test.txt'
-                zip zipFile: 'test.zip', archive: false, dir: 'archive'
-                archiveArtifacts artifacts: 'test.zip', fingerprint: true
+                zip zipFile: 'function' + $env.BUILD_ID + '.zip', archive: false
+                archiveArtifacts artifacts: 'function' + $env.BUILD_ID + '.zip', fingerprint: true
             }
         }
          stage('branch-name') {
