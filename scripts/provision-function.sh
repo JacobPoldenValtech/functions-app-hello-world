@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+
 
 resourceGroupName="New-Scratch-ResourceGroup"
 resourceGroupLocation="UK South"
