@@ -25,9 +25,14 @@ pipeline {
                 archiveArtifacts artifacts: "function${env.BUILD_ID}.zip", fingerprint: true
             }
         }
-         stage('branch-name') {
+        stage('provision') {
             steps {
-                sh 'echo $env.BRANCH_NAME'
+                sh "scripts/provision-function.sh"
+            }
+        }
+         stage('get-env') {
+            steps {
+                sh "echo ${env.BUILD_ID}.zip"
             }
         }
     }
