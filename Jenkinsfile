@@ -1,8 +1,8 @@
 pipeline {
-    agent none
+    agent {docker { image 'node:8.14-alpine' }}
     environment {
-        HOME = '.'
-        PATH='/usr/bin/env'
+        HOME = '.;/usr/local/bin'
+        PATH='/usr/bin/env;/usr/local/bin'
     }
     stages {
         stage('Auth') {
@@ -13,13 +13,11 @@ pipeline {
         }
         }
         stage('build') {
-            agent {docker { image 'node:8.14-alpine' }}
             steps {
                 sh 'npm --version && npm install'
             }
         }
         stage('test') {
-            agent {docker { image 'node:8.14-alpine' }}
             steps {
                 sh 'npm test'
             }
