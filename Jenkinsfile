@@ -8,7 +8,10 @@ pipeline {
         stage('Auth') {
             steps {
                 withCredentials([azureServicePrincipal('scratchlogin')]) {
-                        azureCLI commands: [[script: 'az login --service-principal -u "$AZURE_CLIENT_ID" -p "$AZURE_CLIENT_SECRET" -t "$AZURE_TENANT_ID" --verbose --debug']], principalCredentialId: '"$AZURE_CLIENT_ID"'
+                        sh 'echo $AZURE_CLIENT_SECRET'
+                        sh 'echo $AZURE_CLIENT_ID'
+                        sh 'echo $AZURE_TENANT_ID'
+                        azureCLI commands: [[script: 'az login --service-principal -p "$AZURE_CLIENT_SECRET" -t "$AZURE_TENANT_ID" --verbose --debug']], principalCredentialId: '"$AZURE_CLIENT_ID"'
 
                 }
         }
