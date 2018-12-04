@@ -6,9 +6,11 @@ pipeline {
     }
     stages {
         stage('Auth') {
-         withCredentials([azureServicePrincipal('scratchlogin')]) {
-                 sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-            }
+            steps {
+                withCredentials([azureServicePrincipal('scratchlogin')]) {
+                        sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                }
+        }
         }
         stage('build') {
             steps {
