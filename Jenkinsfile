@@ -5,6 +5,12 @@ pipeline {
         PATH='/usr/bin/env'
     }
     stages {
+        stage('Auth') {
+            withCredentials([azureServicePrincipal('principal-credentials-id')]) {
+                sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
+                sh 'az resource list'
+        }
         stage('build') {
             steps {
                 sh 'npm --version && npm install'
@@ -29,11 +35,6 @@ pipeline {
         stage('provision') {
             steps {
                 sh "scripts/provision-function.sh"
-            }
-        }
-         stage('get-env') {
-            steps {
-                sh "echo ${env.BUILD_ID}.zip"
             }
         }
     }
